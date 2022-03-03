@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "363707129546",
+    "firebase_url": "https://firstdemo130-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "firstdemo130",
+    "storage_bucket": "firstdemo130.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:363707129546:android:f1a92125ce1c8110b11e33",
+        "android_client_info": {
+          "package_name": "io.ingkamon.dev.firebase_130"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "363707129546-fhqvms341druv5hdslt3m49n9aa1hlpv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.ingkamon.dev.firebase_130",
+            "certificate_hash": "a9632d958f7a73ea89b3944c7c6f26d185789785"
+          }
+        },
+        {
+          "client_id": "363707129546-i1cc00krf0pvejml5544huhb5ltbv3d9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASVtsjoVohvGZdBFZYUyjqRmdrsRysp6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "363707129546-i1cc00krf0pvejml5544huhb5ltbv3d9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
