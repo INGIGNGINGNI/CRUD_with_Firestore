@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_130/pages/addproduct.dart';
+import 'package:firebase_130/pages/editproduct.dart';
 import 'package:flutter/material.dart';
 
 class ShowProductPage extends StatefulWidget {
@@ -13,12 +14,11 @@ class _ShowProductPageState extends State<ShowProductPage> {
   CollectionReference products =
       FirebaseFirestore.instance.collection('Products');
 
-  Future<void> deleteProduct() {
-    return products
-        .doc()
-        .delete()
-        .then((value) => print("Deleted data Successfully"))
-        .catchError((error) => print("Failed to delete user: $error"));
+  Future<void> deleteProduct({String? id}) {
+    return products.doc(id).delete().then((value) {
+      print("Deleted data Successfully");
+      Navigator.pop(context);
+    }).catchError((error) => print("Failed to delete user: $error"));
   }
 
   @override
@@ -75,7 +75,14 @@ class _ShowProductPageState extends State<ShowProductPage> {
                 Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
                 return Card(
                   child: ListTile(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => EditProductPage(id: doc.id),
+                        ),
+                      ).then((value) => setState(() {}));
+                    },
                     title: Text(
                       '${data['product_name']}',
                       style: const TextStyle(
@@ -96,8 +103,7 @@ class _ShowProductPageState extends State<ShowProductPage> {
                                 child: const Text('ยกเลิก')),
                             TextButton(
                                 onPressed: () {
-                                  deleteProduct()
-                                      .then((value) => setState(() {}));
+                                  deleteProduct(id: doc.id);
                                 },
                                 child: const Text(
                                   'ยืนยัน',

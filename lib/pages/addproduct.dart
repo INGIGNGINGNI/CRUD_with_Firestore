@@ -17,14 +17,17 @@ class _AddProductPageState extends State<AddProductPage> {
   CollectionReference products =
       FirebaseFirestore.instance.collection('Products');
   Future<void> addProduct() {
-    return products
-        .add({
-          'product_name': _name.text,
-          'price': _price.text,
-          'product_type': _type.text,
-        })
-        .then((value) => print("Product data has been successfully"))
-        .catchError((error) => print("Failed to add data: $error"));
+    return products.add({
+      'product_name': _name.text,
+      'price': _price.text,
+      'product_type': _type.text,
+    }).then((value) {
+      print("Product data has been successfully");
+      var route = MaterialPageRoute(
+        builder: (context) => const ShowProductPage(),
+      );
+      Navigator.push(context, route);
+    }).catchError((error) => print("Failed to add data: $error"));
   }
 
   @override
@@ -69,7 +72,6 @@ class _AddProductPageState extends State<AddProductPage> {
                 children: [
                   TextFormField(
                     controller: _name,
-                    style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       label: Text(
                         'Product name',
@@ -98,7 +100,6 @@ class _AddProductPageState extends State<AddProductPage> {
                   ),
                   TextFormField(
                     controller: _price,
-                    style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       label: Text(
                         'Price',
@@ -127,7 +128,6 @@ class _AddProductPageState extends State<AddProductPage> {
                   ),
                   TextFormField(
                     controller: _type,
-                    style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       label: Text(
                         'Product Type',
@@ -157,10 +157,10 @@ class _AddProductPageState extends State<AddProductPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
+                      Text(
                         'บันทึกข้อมูล',
                         style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.grey.shade800,
                             fontSize: 27,
                             fontWeight: FontWeight.w700),
                       ),
@@ -170,13 +170,7 @@ class _AddProductPageState extends State<AddProductPage> {
                         child: IconButton(
                             color: Colors.white,
                             onPressed: () {
-                              addProduct();
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const ShowProductPage(),
-                                ),
-                              ).then((value) => setState(() {}));
+                              addProduct().then((value) => setState(() {}));
                             },
                             icon: const Icon(
                               Icons.arrow_forward,
