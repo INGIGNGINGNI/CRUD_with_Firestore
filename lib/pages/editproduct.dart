@@ -66,7 +66,7 @@ class _EditProductPageState extends State<EditProductPage> {
               snapshot.data!.data() as Map<String, dynamic>;
 
           _name.text = data['product_name'];
-          _price.text = data['price'];
+          _price.text = data['price'].toString();
           _type.text = data['product_type'];
 
           return SingleChildScrollView(
@@ -93,7 +93,7 @@ class _EditProductPageState extends State<EditProductPage> {
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: const BorderSide(
-                                color: Colors.white,
+                                color: Colors.blue,
                               ),
                             ),
                             errorBorder: OutlineInputBorder(
@@ -121,7 +121,7 @@ class _EditProductPageState extends State<EditProductPage> {
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: const BorderSide(
-                                color: Colors.white,
+                                color: Colors.blue,
                               ),
                             ),
                             errorBorder: OutlineInputBorder(
@@ -149,7 +149,7 @@ class _EditProductPageState extends State<EditProductPage> {
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: const BorderSide(
-                                color: Colors.white,
+                                color: Colors.blue,
                               ),
                             ),
                             errorBorder: OutlineInputBorder(
